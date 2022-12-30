@@ -1,0 +1,35 @@
+
+eureka:
+  client:
+    service-url:
+      defaultZone: "http://eurk1.com:7001/eureka/"
+server:
+  port: 91
+
+
+spring:
+  application:
+    name: consumer
+
+# 配置在Consumer， 为什么说是轻量级的，服务提供者他只提供服务，所有的容错机制全部都是基于客户端（服务消费者）
+#feign:
+#  client:
+#    config:
+#      default:
+#        connectTimeout: 1000
+#        readTimeout: 2000
+
+#ribbon:
+#  eager-load:
+#    enable: true
+#    clients: cloud-having
+#  ConnectTimeout: 1000
+#  ReadTimeout: 2000
+#  MaxAutoRetries: 0
+#  MaxAutoRetriesNextServer: 1
+#  retryableStatusCodes: 500,502,504
+#  #  retryableStatusCodes: 500,502,504,404
+#  OkToRetryOnAllOperations: true
+feign:
+  circuitbreaker:
+    enabled: true

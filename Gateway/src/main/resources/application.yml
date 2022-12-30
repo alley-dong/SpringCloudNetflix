@@ -1,0 +1,43 @@
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: xxooroute             # 如果要设置多个就要写这个
+#          uri: http://localhost:81  # 路由的地址
+#          predicates:
+#            # 两层断言，Path不符合 下面就不会执行
+#            - Path=/api/gateway/**  # 路径断言
+#            - Query=id,.            # 参数断言 如果接口不传id 就404，也可以写正则匹配
+#          filters:
+#            # 回退路由 Path进行断言的时候会把/api/gateway也给拼接上localhost:81/api/gateway/alive
+#            # StripPrefix就是去掉几个前缀1就是1级 2就是2级 以此类推
+#            - StripPrefix=2
+#server:
+#  port: 9009
+
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          # 开启从eureka 拉取服务列表  并自动映射
+          enabled: true
+
+      routes:
+        - id: provider
+          predicates:
+            - Path=/api/provider/**
+          uri: lb://USER-PROVIDER
+          filters:
+            - StripPrefix=2
+
+  application:
+    name: myGateWay
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://eurk1.com:7001/eureka/
+server:
+  port: 9009

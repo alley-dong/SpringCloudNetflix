@@ -1,0 +1,8 @@
+# Project exclude paths
+/EurekaClient2/target/
+/EurekaClinent/target/
+/Gateway/target/
+/UserConsumer/target/
+/UserConsumer2.2.6/target/
+/UserProvider/target/
+/UserUseApi/target/
