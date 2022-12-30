@@ -1,0 +1,15 @@
+# 应用名称
+spring:
+  application:
+    name: CSRF
+
+  security:
+    user:
+      name: dcl
+      password: 1
+      
+server:
+  port: 8080
+  
+  
+
