@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<body>
+
+<form action="/login" method="post">
+    <input name="username" type="text"><br>
+    <input name="password" type="password"><br>
+    
+    <!-- 这里在写的时候 遇见了一个问题 就是如果表单没有提交这个东西 拦截器拦截到请求 就会拒绝你这个请求。 -->
+    <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+    <button type="submit">登录</button>
+</form>
+</body>
+</html>
